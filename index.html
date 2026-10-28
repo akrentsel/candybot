@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CandyBot</title>
+<meta name="description" content="Robots handing out candy to kids. Saturday, October 31, 6 to 8 pm at 374 Connecticut Ave, San Francisco. Free and open to everyone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:ital,wght@0,500;0,700;0,900;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #1b1030;
+    --night-deep: #110a20;
+    --bone: #fff4e0;
+    --orange: #ff8c1a;
+    --pink: #ff5fa2;
+    --slime: #b7ff3c;
+    --purple: #6a3cc9;
+    --ink: #1b1030;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--night-deep); }
+  body {
+    margin: 0;
+    font-family: "Nunito", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: var(--bone);
+    background:
+      radial-gradient(ellipse 120% 70% at 50% -10%, #3a2168 0%, var(--night) 45%, var(--night-deep) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  a { color: var(--slime); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--slime); outline-offset: 4px; border-radius: 4px;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 16px; }
+  h1, h2 { font-family: "Bungee", "Nunito", sans-serif; font-weight: 400; line-height: 1; margin: 0; }
+  h2 { font-size: clamp(1.5rem, 4.5vw, 2.1rem); color: var(--orange); margin-bottom: .75rem; }
+  p { margin: 0 0 1rem; max-width: 36rem; }
+
+  /* Sky */
+  .sky { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .star { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--bone); opacity: .55; }
+  .moon {
+    position: absolute; top: 5vh; right: 8vw; width: clamp(56px, 9vw, 110px); aspect-ratio: 1;
+    border-radius: 50%; background: var(--bone);
+    box-shadow: 0 0 60px 10px rgba(255,244,224,.25);
+  }
+  .moon::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: var(--night); transform: translate(-28%, -14%); 
+  }
+
+  /* Hero */
+  main { position: relative; z-index: 1; }
+  .hero { text-align: center; padding: clamp(2.5rem, 8vh, 5rem) 0 2.5rem; }
+  .bot { width: min(300px, 70vw); height: auto; display: block; margin: 0 auto 1.5rem; }
+  .hero h1 {
+    font-size: clamp(3rem, 13vw, 7rem);
+    color: var(--orange);
+    letter-spacing: .02em;
+    text-shadow: .06em .06em 0 var(--pink), .12em .12em 0 var(--purple);
+  }
+  .tagline {
+    font-size: clamp(1.25rem, 3.2vw, 1.6rem); font-weight: 700;
+    margin: 1.25rem auto 0; max-width: 30rem;
+  }
+
+  /* The sign */
+  .sign {
+    background: var(--bone); color: var(--ink);
+    border-radius: 22px;
+    padding: clamp(1.25rem, 4vw, 2rem) clamp(1.25rem, 5vw, 2.5rem);
+    margin: 1.5rem auto 0;
+    box-shadow: 0 10px 0 var(--purple), 0 24px 50px rgba(0,0,0,.45);
+    text-align: left;
+    display: grid; gap: 1.25rem;
+  }
+  .sign dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.25rem; align-items: baseline; }
+  .sign dt {
+    font-family: "Bungee", sans-serif; font-size: .9rem; color: var(--pink); letter-spacing: .02em;
+  }
+  .sign dd { margin: 0; font-size: clamp(1.15rem, 3vw, 1.45rem); font-weight: 900; line-height: 1.25; }
+  .sign dd small { display: block; font-size: 1rem; font-weight: 700; color: #5a4a7a; }
+  .sign a { color: var(--purple); }
+  .free {
+    font-family: "Bungee", sans-serif; font-size: clamp(1rem, 2.6vw, 1.2rem);
+    color: var(--ink); background: var(--slime);
+    padding: .7rem 1rem; border-radius: 12px; text-align: center;
+    transform: rotate(-1deg);
+  }
+  @media (max-width: 420px) {
+    .sign dl { grid-template-columns: 1fr; gap: .15rem; }
+    .sign dt { margin-top: .6rem; }
+  }
+
+  /* Sections */
+  section { padding: 2.5rem 0; }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; counter-reset: step; }
+  .steps li {
+    display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start;
+    counter-increment: step;
+  }
+  .steps li::before {
+    content: counter(step);
+    font-family: "Bungee", sans-serif; font-size: 1.4rem; line-height: 1;
+    color: var(--ink); background: var(--pink);
+    width: 3rem; height: 3rem; border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .steps strong { display: block; font-weight: 900; font-size: 1.2rem; }
+  .notes { padding-left: 1.2rem; margin: 0; }
+  .notes li { margin-bottom: .5rem; }
+  .notes li::marker { color: var(--orange); }
+
+  footer {
+    position: relative; z-index: 1;
+    text-align: center; padding: 2rem 16px 3rem; color: #b9a9d9; font-size: 1rem;
+  }
+  footer .candy { font-size: 1.6rem; letter-spacing: .3em; margin-bottom: .5rem; }
+
+  /* Robot animation: one page-load moment, eyes glow then arm offers candy */
+  .eye { fill: var(--slime); filter: drop-shadow(0 0 6px var(--slime)); }
+  .arm { transform-origin: 168px 150px; }
+  .antenna-light { fill: var(--pink); }
+  @media (prefers-reduced-motion: no-preference) {
+    .eye { animation: blink 5s 2s infinite; }
+    .arm { animation: offer 1.2s cubic-bezier(.3,1.4,.5,1) .6s both; }
+    .antenna-light { animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+    .eye { transform-box: fill-box; transform-origin: center; }
+    @keyframes offer { from { transform: rotate(55deg); } to { transform: rotate(0deg); } }
+    @keyframes pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" aria-hidden="true">
+  <div class="moon"></div>
+  <span class="star" style="top:12%;left:9%"></span>
+  <span class="star" style="top:22%;left:31%"></span>
+  <span class="star" style="top:8%;left:52%"></span>
+  <span class="star" style="top:30%;left:78%"></span>
+  <span class="star" style="top:48%;left:14%"></span>
+  <span class="star" style="top:60%;left:88%"></span>
+  <span class="star" style="top:75%;left:6%"></span>
+  <span class="star" style="top:85%;left:60%"></span>
+</div>
+
+<main class="wrap">
+  <header class="hero">
+    <svg class="bot" viewBox="-20 0 280 260" role="img" aria-label="A friendly robot holding out a piece of candy">
+      <!-- antenna -->
+      <rect x="117" y="18" width="6" height="26" fill="#9a8ab8"/>
+      <circle class="antenna-light" cx="120" cy="14" r="9"/>
+      <!-- head -->
+      <rect x="62" y="44" width="116" height="84" rx="18" fill="#cfc2e6"/>
+      <rect x="76" y="60" width="88" height="52" rx="10" fill="#1b1030"/>
+      <ellipse class="eye" cx="100" cy="86" rx="11" ry="12"/>
+      <ellipse class="eye" cx="140" cy="86" rx="11" ry="12"/>
+      <path d="M94 104 q26 10 52 0" stroke="#b7ff3c" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- ears -->
+      <rect x="48" y="74" width="14" height="28" rx="5" fill="#9a8ab8"/>
+      <rect x="178" y="74" width="14" height="28" rx="5" fill="#9a8ab8"/>
+      <!-- neck -->
+      <rect x="106" y="128" width="28" height="12" fill="#9a8ab8"/>
+      <!-- body -->
+      <rect x="66" y="140" width="108" height="92" rx="20" fill="#cfc2e6"/>
+      <rect x="86" y="158" width="68" height="40" rx="8" fill="#1b1030"/>
+      <text x="120" y="186" text-anchor="middle" font-family="Bungee, sans-serif" font-size="20" fill="#ff8c1a">CANDY</text>
+      <circle cx="96" cy="216" r="5" fill="#ff5fa2"/>
+      <circle cx="120" cy="216" r="5" fill="#b7ff3c"/>
+      <circle cx="144" cy="216" r="5" fill="#ff8c1a"/>
+      <!-- left arm -->
+      <rect x="40" y="150" width="26" height="14" rx="7" fill="#9a8ab8"/>
+      <rect x="28" y="150" width="16" height="50" rx="8" fill="#9a8ab8"/>
+      <!-- right arm offering candy -->
+      <g class="arm">
+        <rect x="174" y="146" width="56" height="14" rx="7" fill="#9a8ab8"/>
+        <circle cx="228" cy="153" r="10" fill="#cfc2e6"/>
+        <!-- wrapped candy -->
+        <g transform="translate(228 136)">
+          <path d="M-24 0 l8 -7 v14 z" fill="#ff5fa2"/>
+          <path d="M24 0 l-8 -7 v14 z" fill="#ff5fa2"/>
+          <ellipse cx="0" cy="0" rx="17" ry="11" fill="#ff8c1a"/>
+          <path d="M-9 -10 q4 10 0 20 M0 -11 q4 11 0 22 M9 -10 q4 10 0 20" stroke="#fff4e0" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!-- legs / treads -->
+      <rect x="80" y="232" width="24" height="16" rx="4" fill="#9a8ab8"/>
+      <rect x="136" y="232" width="24" height="16" rx="4" fill="#9a8ab8"/>
+      <rect x="64" y="246" width="112" height="10" rx="5" fill="#6a3cc9"/>
+    </svg>
+
+    <h1>CandyBot</h1>
+    <p class="tagline">Robots are handing out candy to kids. Come get some.</p>
+
+    <div class="sign">
+      <dl>
+        <dt>When</dt>
+        <dd>Saturday, October 31<small>6 to 8 pm, Halloween night</small></dd>
+        <dt>Where</dt>
+        <dd>374 Connecticut Ave<small>Potrero Hill, San Francisco. <a href="https://maps.google.com/?q=374+Connecticut+Ave,+San+Francisco,+CA">Open in Maps</a></small></dd>
+      </dl>
+      <div class="free">Free. No sign-up. Everyone welcome.</div>
+    </div>
+  </header>
+
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><div><strong>Walk up to a robot</strong>They're hard to miss. Costumes encouraged, for you and the robot.</div></li>
+      <li><div><strong>Say "trick or treat"</strong>Loud and clear. The robots are friendly but a little hard of hearing.</div></li>
+      <li><div><strong>Hold out your bag</strong>The robot drops in the candy. Say thanks, it likes that.</div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Good to know</h2>
+    <ul class="notes">
+      <li>Bring a bag or bucket for your candy.</li>
+      <li>Kids should come with a grown-up. Grown-ups can have candy too.</li>
+      <li>Just show up any time between 6 and 8 pm.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <div class="candy" aria-hidden="true">🍬🤖🎃🤖🍭</div>
+  See you on Connecticut Ave.
+</footer>
+
+</body>
+</html>
