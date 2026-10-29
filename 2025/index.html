@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CandyBot 2025 Photos</title>
+<meta name="description" content="Photos from Trick or Treat with Robots, Halloween 2025 on Connecticut St, San Francisco.">
+<link rel="canonical" href="https://candybot.org/2025/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Kanit:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --poster-base: #F69C2D;
+    --label-yellow: #ECDE63;
+    --ink: #2E2B2B;
+    --white: #FFFFFF;
+    --black-paper: #0f0f0f;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--poster-base); }
+  body {
+    margin: 0; font-family: "Kanit", system-ui, sans-serif; font-weight: 500;
+    font-size: 1.125rem; line-height: 1.5; letter-spacing: .02em; color: var(--ink);
+  }
+  a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+  img { display: block; height: auto; max-width: 100%; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  .sky {
+    position: relative; z-index: 2; color: var(--white);
+    background: url("../img/paper-tile.webp") center bottom / 100% auto repeat-y, var(--black-paper);
+    padding: 2rem 0 1.5rem;
+  }
+  .sky .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem; align-items: center; }
+  .lettering { display: flex; align-items: flex-start; gap: 3%; max-width: 520px; }
+  .lettering .trick { width: 36%; }
+  .lettering .or    { width: 12%; margin-top: 11.8%; }
+  .lettering .treat { width: 44%; margin-top: 8.6%; }
+  .year {
+    margin: 0; font-family: "Gochi Hand", cursive; font-weight: 400; color: var(--label-yellow);
+    font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: 1; transform: rotate(-3deg);
+  }
+  .sky p { margin: .75rem 0 0; color: var(--label-yellow); }
+  .ghost { position: absolute; right: 4%; top: 1rem; width: clamp(50px, 6vw, 80px); }
+  .tear { position: relative; z-index: 1; height: clamp(60px, 8vw, 120px); background: url("../img/tear-edge.webp") center top / 100% 100% no-repeat; }
+
+  .candy-land {
+    position: relative; z-index: 1; overflow: hidden; padding-bottom: 3rem;
+    background: url("../img/grunge.jpg") center top / 100% auto repeat-y, var(--poster-base);
+    background-blend-mode: color-burn, normal;
+  }
+  .glow { position: absolute; z-index: 0; pointer-events: none; }
+  .glow-right { right: -8%; top: 10%; width: min(65vw, 820px); }
+  .glow-footer { left: -6%; bottom: 0; width: min(55vw, 640px); }
+  .candy-land .wrap { position: relative; z-index: 1; }
+
+  .gallery {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2rem 1.75rem;
+    padding-top: clamp(1.5rem, 4vw, 3rem); list-style: none; margin: 0;
+  }
+  .gallery li {
+    background: var(--white); padding: .75rem .75rem 1rem;
+    clip-path: polygon(0.5% 1%, 99.5% 0, 100% 99%, 0 100%);
+    box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  }
+  .gallery li:nth-child(odd) { transform: rotate(-1.2deg); }
+  .gallery li:nth-child(even) { transform: rotate(1deg); }
+  .gallery li.wide { grid-column: 1 / -1; max-width: 640px; justify-self: center; width: 100%; }
+  .gallery img { width: 100%; aspect-ratio: 1200 / 1603; object-fit: cover; }
+  .gallery figure { margin: 0; }
+  .gallery figcaption { font-weight: 600; padding: .6rem .25rem 0; }
+  .back { text-align: center; margin: 3rem 0 0; font-weight: 600; }
+  @media (max-width: 700px) {
+    .sky .wrap { grid-template-columns: 1fr; }
+    .lettering { max-width: 360px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="sky">
+  <img class="ghost" src="../img/ghost.webp" alt="" width="139" height="159">
+  <div class="wrap">
+    <div>
+      <h1 class="lettering" aria-label="Trick or Treat with Robots">
+        <img class="trick" src="../img/trick.webp" alt="" width="355" height="216">
+        <img class="or" src="../img/or.webp" alt="" width="118" height="132">
+        <img class="treat" src="../img/treat.webp" alt="" width="404" height="216">
+      </h1>
+      <p>Photos from last year's robot candy giveaway. Kids' faces are hidden on purpose.</p>
+    </div>
+    <p class="year">Halloween 2025</p>
+  </div>
+</header>
+
+<section class="candy-land">
+  <div class="tear" aria-hidden="true"></div>
+  <img class="glow glow-right" src="../img/orange-glow-lower-right.svg" alt="" width="397" height="336">
+  <img class="glow glow-footer" src="../img/orange-glow-footer.svg" alt="" width="380" height="157">
+  <div class="wrap">
+    <ol class="gallery">
+      <li class="wide"><figure><img src="photos/01-robot.jpg" alt="The CandyBot robot on its own, ready for the night" width="1200" height="1603" loading="eager"><figcaption>The robot, ready for duty.</figcaption></figure></li>
+      <li><figure><img src="photos/02-kids.jpg" alt="A crowd of kids in costumes lined up for the robot, faces covered with pumpkin and ghost emojis" width="1200" height="1603" loading="lazy"><figcaption>The line forms.</figcaption></figure></li>
+      <li><figure><img src="photos/03-kids.jpg" alt="Kids in costumes gathered around the robot, faces covered with emojis" width="1200" height="1603" loading="lazy"><figcaption>Trick or treat, robot!</figcaption></figure></li>
+      <li><figure><img src="photos/04-kids.jpg" alt="Kids getting candy from the robot, faces covered with emojis" width="1200" height="1603" loading="lazy"><figcaption>Candy delivered.</figcaption></figure></li>
+      <li><figure><img src="photos/05-kids.jpg" alt="More kids meeting the robot, faces covered with emojis" width="1200" height="1603" loading="lazy"><figcaption>Come meet us!</figcaption></figure></li>
+      <li class="wide"><figure><img src="photos/06-house.jpg" alt="The people from the house who ran the event, posing together" width="1200" height="1603" loading="lazy"><figcaption>The house crew. See you this year!</figcaption></figure></li>
+    </ol>
+    <p class="back"><a href="/">Back to this year's event</a></p>
+  </div>
+</section>
+
+</body>
+</html>
