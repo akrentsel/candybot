@@ -3,7 +3,7 @@
 Event page for CandyBot: robots handing out candy to kids at
 374 Connecticut St, San Francisco, 5 to 8 pm.
 
-Live at https://candybot.exe.xyz/
+Live at https://candybot.org/ (also https://candybot.exe.xyz/)
 
 ## Editing
 
@@ -19,7 +19,7 @@ arrives, run `scripts/import-assets.sh <folder>` to refresh `img/` and
 
 ## How deploys work
 
-The server at candybot.exe.xyz serves this repo's checkout at
+The server behind candybot.org serves this repo's checkout at
 `~/candybot` on port 8000 using `serve.sh` (Python's built-in static
 file server). A cron job on that machine runs `git pull --ff-only`
 every minute, so any push to `main` goes live on the next tick.
