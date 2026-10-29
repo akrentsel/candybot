@@ -10,6 +10,10 @@ Live at https://candybot.exe.xyz/
 Everything is in `index.html`. There is no build step. Edit, commit,
 push to `main`, and the live site updates within a minute.
 
+The two robot illustrations in `img/` are cut out of `poster.jpg` by
+`scripts/make-images.sh` (needs ImageMagick). Re-run it if the poster
+changes.
+
 ## How deploys work
 
 The server at candybot.exe.xyz serves this repo's checkout at

@@ -114,6 +114,14 @@
   .robot img { width: 100%; height: auto; display: block; filter: drop-shadow(0 8px 10px rgba(0,0,0,.25)); }
   .robot.cape { max-width: 20rem; justify-self: start; }
   .robot.wings { max-width: 28rem; justify-self: end; }
+  /* The poster itself clips this robot at its right and bottom edges,
+     so fade those two edges instead of showing a straight cut. */
+  .robot.wings img {
+    -webkit-mask-image: linear-gradient(to right, #000 88%, transparent), linear-gradient(to bottom, #000 90%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, #000 88%, transparent), linear-gradient(to bottom, #000 90%, transparent);
+    mask-composite: intersect;
+  }
   .bubble {
     display: inline-block; background: var(--white); color: var(--ink);
     font-weight: 800; font-size: clamp(1.1rem, 2.8vw, 1.5rem); line-height: 1.2;
@@ -284,7 +292,7 @@
   <div class="ghost-row" aria-hidden="true">
     <svg><use href="#bat"/></svg><svg><use href="#ghost"/></svg><svg><use href="#bat"/></svg>
   </div>
-  See you on Connecticut Ave.
+  See you on Connecticut Ave. <a href="poster.jpg">Grab the poster</a> to share or print.
 </footer>
 
 </body>
