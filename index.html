@@ -129,6 +129,13 @@
   .steps strong { display: block; font-weight: 600; font-size: 1.15rem; line-height: 1.2; }
   .tips { padding-left: 1.2rem; margin: 0; }
   .tips li { margin-bottom: .45rem; }
+  .photos-link {
+    justify-self: start; display: inline-block; text-decoration: none;
+    background: var(--paper-label); color: var(--ink); font-weight: 600; font-size: 1.25rem;
+    padding: .7rem 1.4rem; transform: rotate(-1.5deg);
+    clip-path: polygon(0 40%, 5% 0, 45% 8%, 98% 0, 100% 45%, 96% 100%, 50% 92%, 3% 100%);
+  }
+  .photos-link:hover, .photos-link:focus-visible { background: var(--label-yellow); }
 
   .grown { margin: clamp(2rem, 5vw, 4rem) 0 0; text-align: center; font-weight: 600; font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.1; }
   footer { text-align: center; padding: 1rem 24px 3.5rem; font-weight: 600; }
@@ -229,6 +236,7 @@
             <li>Kids should come with a grown-up. Grown-ups get candy too.</li>
           </ul>
         </div>
+        <a class="photos-link" href="/2025/">See photos from last year</a>
       </div>
 
       <div class="fairy-col">
@@ -251,7 +259,7 @@
   </div>
 
   <footer>
-    See you on Connecticut St. <a href="poster.png">Grab the poster</a> to share or print, or see <a href="/2025/">photos from last year</a>.
+    See you on Connecticut St. <a href="poster.png">Grab the poster</a> to share or print.
   </footer>
 </section>
 
