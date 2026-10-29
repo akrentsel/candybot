@@ -130,13 +130,17 @@
   .steps strong { display: block; font-weight: 600; font-size: 1.15rem; line-height: 1.2; }
   .tips { padding-left: 1.2rem; margin: 0; }
   .tips li { margin-bottom: .45rem; }
+  /* Corner ribbon: a diagonal yellow strip across the top right corner */
+  .corner { position: absolute; top: 0; right: 0; width: 230px; height: 230px; overflow: hidden; z-index: 3; pointer-events: none; }
   .ribbon {
-    position: absolute; top: 1.1rem; right: 0; z-index: 3; text-decoration: none;
-    background: var(--paper-label); color: var(--ink); font-weight: 600; font-size: 1.05rem;
-    padding: .5rem 1.4rem .5rem 1.2rem; transform: rotate(-2deg); transform-origin: right center;
-    clip-path: polygon(0 45%, 4% 0, 40% 10%, 100% 0, 100% 100%, 45% 92%, 3% 100%);
+    position: absolute; top: 52px; right: -78px; width: 330px; pointer-events: auto;
+    transform: rotate(45deg); text-align: center;
+    background: var(--paper-label); color: var(--ink); font-weight: 600; font-size: 1.05rem; line-height: 1.2;
+    padding: .55rem 2.5rem; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px;
+    box-shadow: 0 3px 8px rgba(0,0,0,.45);
   }
-  .ribbon:hover, .ribbon:focus-visible { background: var(--label-yellow); }
+  .ribbon:hover, .ribbon:focus-visible { background: var(--label-yellow); text-decoration-thickness: 3px; }
+  @media (max-width: 600px) { .corner { width: 170px; height: 170px; } .ribbon { top: 36px; right: -84px; width: 300px; font-size: .9rem; padding: .4rem 2rem; } }
 
   .grown { margin: clamp(2rem, 5vw, 4rem) 0 0; text-align: center; font-weight: 600; font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.1; }
   footer { text-align: center; padding: 1rem 24px 3.5rem; font-weight: 600; }
@@ -164,7 +168,7 @@
 <body>
 
 <header class="sky">
-  <a class="ribbon" href="/2025/">Photos from last year</a>
+  <div class="corner"><a class="ribbon" href="/2025/">See last year's photos</a></div>
   <div class="wrap hero">
     <div class="hero-text">
       <h1 class="sr-only">Trick or Treat with Robots! For kids.</h1>
