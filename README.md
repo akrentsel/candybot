@@ -12,9 +12,8 @@ push to `main`, and the live site updates within a minute.
 
 The artwork in `img/` comes from the Figma developer handoff
 (https://www.figma.com/design/AWKpUqx8NIJqSOLR92iqcd/CandyBot). The page
-composes the handoff's transparent pieces in the poster's own
-coordinates, so the hero scales with the page width; labels and speech
-bubbles are live text in Kanit and Gochi Hand. When a new handoff folder
+is a full-width layout built from the handoff's transparent pieces;
+labels and speech bubbles are live text in Kanit and Gochi Hand. When a new handoff folder
 arrives, run `scripts/import-assets.sh <folder>` to refresh `img/` and
 `poster.png`.
 

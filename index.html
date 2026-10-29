@@ -12,8 +12,6 @@
   /* Values from the Figma handoff (design-tokens.css) */
   :root {
     --poster-base: #F69C2D;
-    --poster-glow: #FC8C03;
-    --paper-title: #FCEE73;
     --paper-label: #F4E66B;
     --label-yellow: #ECDE63;
     --ink: #2E2B2B;
@@ -21,7 +19,7 @@
     --black-paper: #0f0f0f;
   }
   * { box-sizing: border-box; }
-  html { background: var(--black-paper); }
+  html { background: var(--poster-base); }
   body {
     margin: 0;
     font-family: "Kanit", system-ui, sans-serif;
@@ -30,214 +28,231 @@
     line-height: 1.5;
     letter-spacing: .02em;
     color: var(--ink);
-    background: var(--black-paper);
+    overflow-x: hidden;
   }
   a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
   a:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+  img { display: block; height: auto; max-width: 100%; }
   .sr-only {
     position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
-  img { display: block; height: auto; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  /* The poster sheet: a centered column with the poster's orange base,
-     grunge texture and glows. All positions inside are in cqw, i.e.
-     percentages of the poster width, straight from the Figma layout
-     (595 units wide), so the composition scales with the page. */
-  .sheet {
-    max-width: 960px; margin: 0 auto;
-    container-type: inline-size;
-    background: url("img/grunge.jpg") top center / 100% auto repeat-y, var(--poster-base);
-    background-blend-mode: color-burn, normal;
-    position: relative;
+  /* Black paper header */
+  .sky {
+    position: relative; z-index: 2;
+    color: var(--white);
+    background: url("img/paper-tile.webp") center bottom / 100% auto repeat-y, var(--black-paper);
   }
-  .stage { position: relative; height: 146cqw; overflow-x: clip; }
-  .stage > *, .head > *, .lower > * { position: absolute; }
-  .head { inset: 0; height: 89.08cqw; z-index: 1; }
-  .lower { inset: 0; }
-  .lower .glow { z-index: 0; }
-  .lower .piece { z-index: 2; }
-
-  /* Black torn paper and everything on it */
-  .paper { left: 0; top: 0; width: 100cqw; height: auto; }
-  .trick { left: 12.27cqw; top: 1.18cqw; width: 29.83cqw; }
-  .or    { left: 42.02cqw; top: 9.92cqw; width: 9.92cqw; }
-  .treat { left: 52.61cqw; top: 7.56cqw; width: 33.95cqw; }
-  .ghost { left: 87.30cqw; top: 2.08cqw; width: 11.68cqw; }
-  .title { left: 3.50cqw; top: 15.63cqw; width: 96.55cqw; }
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    gap: 2rem 3rem; align-items: start; padding-top: 2.5rem;
+  }
+  .lettering { display: flex; align-items: flex-start; gap: 3%; width: 100%; margin-left: 2%; }
+  .lettering .trick { width: 36%; }
+  .lettering .or    { width: 12%; margin-top: 11.8%; }
+  .lettering .treat { width: 44%; margin-top: 8.6%; }
+  .banner { position: relative; container-type: inline-size; margin-top: -6%; }
+  .banner img { width: 100%; }
   .kids {
-    left: 76.5cqw; top: 41.9cqw; margin: 0;
-    font-family: "Gochi Hand", cursive; font-weight: 400; font-size: 5.27cqw; line-height: 1.37;
+    position: absolute; left: 75.5%; top: 72%; margin: 0;
+    font-family: "Gochi Hand", cursive; font-weight: 400; font-size: 5.46cqw; line-height: 1.3;
     color: var(--ink); white-space: nowrap;
     transform: rotate(-3deg); transform-origin: left top;
   }
-  .label {
-    top: 46.39cqw; margin: 0;
-    font-weight: 500; font-size: 3.36cqw; line-height: 1.5; color: var(--label-yellow);
+  .labels {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem 2rem; margin-top: 1.5rem; padding-left: 2%;
   }
-  .label.when { left: 8.74cqw; }
-  .label.where { left: 52.77cqw; }
-  .date    { left: 5.21cqw;  top: 51.43cqw; width: 39.26cqw; }
-  .address { left: 49.08cqw; top: 51.43cqw; width: 44.03cqw; }
-  .date svg, .address svg, .bubble svg { display: block; width: 100%; height: auto; overflow: visible; }
-  .date text, .address text { font-family: "Kanit", sans-serif; font-weight: 600; letter-spacing: .02em; fill: var(--ink); }
-  .address a { text-decoration: none; }
-  .address a:hover text, .address a:focus-visible text { text-decoration: underline; }
-  .corn-upper { left: 92.38cqw; top: 67.07cqw; width: 6.70cqw; z-index: 3; }
-  .bat-upper  { left: 74.96cqw; top: 78.66cqw; width: 16.79cqw; z-index: 3; }
+  .labels p { margin: 0 0 .25rem; font-weight: 500; font-size: 1.3rem; color: var(--label-yellow); }
+  .labels svg { display: block; width: 100%; max-width: 400px; height: auto; overflow: visible; }
+  .labels text, .bubble text { font-family: "Kanit", sans-serif; font-weight: 600; letter-spacing: .02em; fill: var(--ink); }
+  .labels a { text-decoration: none; }
+  .labels a:hover text, .labels a:focus-visible text { text-decoration: underline; }
 
-  /* Orange half: glows under the paper, robots and candy over it */
-  .glow-middle { left: 12.77cqw; top: 26.39cqw; width: 87.23cqw; }
-  .glow-right  { left: 33.28cqw; top: 85.04cqw; width: 66.72cqw; }
-  .glow-footer { left: 0;        top: 115.13cqw; width: 63.87cqw; }
-  .fairy   { left: 48.86cqw; top: 96.64cqw; width: 62.77cqw; }
-  .vampire { left: -9.24cqw; top: 73.28cqw; width: 43.95cqw; }
-  .corn-lower { left: 43.03cqw; top: 120.34cqw; width: 5.44cqw; }
-  .lolly   { left: 29.99cqw; top: 88.78cqw; width: 17.73cqw; }
-  .bubble-candy { left: 21.18cqw; top: 76.47cqw; width: 31.85cqw; }
-  .bubble-meet  { left: 72.44cqw; top: 92.27cqw; width: 23.45cqw; }
-  .bubble text { font-family: "Kanit", sans-serif; font-weight: 600; letter-spacing: .02em; fill: var(--ink); text-anchor: middle; }
-  .bat-lower { left: 42.52cqw; top: 104.0cqw; width: 15.11cqw; }
-  .candy-purple  { left: 57.89cqw; top: 83.44cqw; width: 8.49cqw; }
-  .candy-striped { left: 27.51cqw; top: 122.51cqw; width: 11.09cqw; }
-  .grown {
-    left: 16.81cqw; top: 135.97cqw; width: 30.8cqw; margin: 0;
-    font-weight: 600; font-size: 3.03cqw; line-height: 1; text-align: center; white-space: nowrap;
+  .hero-art { position: relative; }
+  .hero-art .ghost, .hero-art .bat-upper, .hero-art .corn-upper { position: absolute; }
+  .hero-art .ghost { top: 0; right: 4%; width: 17%; }
+  .hero-art .bat-upper { top: 36%; left: 0; width: 24%; }
+  .hero-art .corn-upper { top: 52%; right: 2%; width: 10%; }
+  .bubble { width: 100%; }
+  .bubble svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .bubble text { text-anchor: middle; }
+  .hero-art .bubble { position: absolute; top: 9%; left: 8%; width: 58%; z-index: 1; }
+  .vampire { width: 60%; margin: 26% 0 -16% 24%; position: relative; }
+
+  /* Torn edge into the orange */
+  .tear { position: relative; z-index: 1; height: clamp(70px, 10vw, 150px); background: url("img/tear-edge.webp") center top / 100% 100% no-repeat; }
+
+  /* Orange section */
+  .candy-land {
+    position: relative; z-index: 1; overflow: hidden;
+    background: url("img/grunge.jpg") center top / 100% auto repeat-y, var(--poster-base);
+    background-blend-mode: color-burn, normal;
   }
-  .glow, .piece img { width: 100%; height: auto; }
-
-  /* Phones: keep the poster top as is, but stack the robots larger */
-  @media (max-width: 600px) {
-    .stage { height: auto; }
-    .head { position: relative; }
-    .lower {
-      position: relative; inset: auto; margin-top: -6cqw;
-      display: flex; flex-direction: column; align-items: flex-start;
-      padding: 0 16px 10cqw;
-    }
-    .lower .piece { position: static; }
-    .glow-middle, .lolly, .candy-purple, .corn-lower { display: none; }
-    .glow-right { left: auto; right: -10cqw; top: auto; bottom: 20cqw; width: 80cqw; }
-    .glow-footer { top: auto; bottom: -6cqw; width: 80cqw; }
-    .bubble-candy { width: 72cqw; margin-left: 10cqw; }
-    .vampire { width: 60cqw; margin: 2cqw 0 0 -14cqw; }
-    .bat-lower { width: 24cqw; align-self: flex-end; margin: -14cqw 4cqw 0 0; }
-    .bubble-meet { width: 50cqw; align-self: flex-end; margin-top: 4cqw; }
-    .fairy { width: 84cqw; align-self: flex-end; margin: 1cqw -8cqw 0 0; }
-    .candy-striped { width: 16cqw; margin: -10cqw 0 0 6cqw; }
-    .grown { width: auto; font-size: 5cqw; margin: 4cqw auto 0; align-self: center; }
+  .glow { position: absolute; z-index: 0; pointer-events: none; }
+  .glow-middle { left: -5%; top: -2%; width: min(70vw, 900px); }
+  .glow-right  { right: -8%; top: 18%; width: min(65vw, 820px); }
+  .glow-footer { left: -6%; bottom: 0; width: min(55vw, 640px); }
+  .candy-land .wrap { position: relative; z-index: 1; }
+  .stage {
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: 2rem 3rem; align-items: start; padding-top: clamp(2.5rem, 6vw, 5rem);
   }
 
-  /* Below the poster: the practical bits, as pasted paper notes */
-  .notes { padding: clamp(2rem, 6cqw, 4rem) 16px 2rem; }
-  .info { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 52rem; margin: 0 auto; }
-  @media (max-width: 700px) { .info { grid-template-columns: 1fr; } }
+  .fairy-col { position: relative; padding-top: 1rem; }
+  .fairy-col .bubble { width: 58%; margin-left: 36%; }
+  .fairy-col .fairy { width: 100%; max-width: 600px; margin: 2% 0 0 auto; position: relative; z-index: 1; }
+  .fairy-col .deco { position: absolute; z-index: 2; }
+  .fairy-col .lolly { left: -4%; top: 14%; width: 24%; }
+  .fairy-col .candy-purple { right: 2%; top: -2%; width: 13%; }
+  .fairy-col .bat-lower { left: 4%; top: 52%; width: 22%; }
+  .fairy-col .candy-striped { left: 12%; bottom: -3%; width: 17%; }
+  .fairy-col .corn-lower { right: 8%; bottom: 4%; width: 9%; }
+
+  .notes { display: grid; gap: 1.5rem; }
   .sticker {
-    background: var(--white); padding: 1.25rem 1.4rem 1.4rem;
+    background: var(--white); padding: 1.4rem 1.6rem 1.6rem;
     clip-path: polygon(1% 3%, 99% 0, 100% 97%, 0 100%);
   }
-  .sticker h2 { font-weight: 600; font-size: 1.5rem; line-height: 1.1; margin: 0 0 .9rem; }
-  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; counter-reset: step; }
-  .steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: .8rem; align-items: start; counter-increment: step; }
+  .sticker h2 { font-weight: 600; font-size: 1.6rem; line-height: 1.1; margin: 0 0 .9rem; }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; }
+  .steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: .8rem; align-items: start; }
   .steps li::before {
-    content: counter(step); font-weight: 600; font-size: 1.2rem;
+    content: counter(step); counter-increment: step; font-weight: 600; font-size: 1.2rem;
     color: var(--white); background: var(--ink); width: 2.4rem; height: 2.4rem; border-radius: 50%;
     display: grid; place-items: center; margin-top: .1rem;
   }
+  .steps { counter-reset: step; }
   .steps strong { display: block; font-weight: 600; font-size: 1.15rem; line-height: 1.2; }
   .tips { padding-left: 1.2rem; margin: 0; }
   .tips li { margin-bottom: .45rem; }
-  footer { text-align: center; padding: 1rem 16px 3rem; font-weight: 600; }
+
+  .grown { margin: clamp(2rem, 5vw, 4rem) 0 0; text-align: center; font-weight: 600; font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.1; }
+  footer { text-align: center; padding: 1rem 24px 3.5rem; font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 0; padding-top: 2rem; }
+    .hero-art { display: grid; margin-top: 1.5rem; }
+    .hero-art .ghost { top: auto; bottom: 20%; right: 0; width: 20%; }
+    .hero-art .bat-upper, .hero-art .corn-upper { display: none; }
+    .hero-art .bubble { position: static; width: 70%; margin-left: 8%; }
+    .vampire { width: 58%; margin: 2% 0 -14% -6%; }
+    .stage { grid-template-columns: 1fr; gap: 2.5rem; }
+    .fairy-col { order: -1; }
+    .fairy-col .bubble { width: 62%; margin-left: 34%; }
+    .fairy-col .fairy { width: 86%; margin-right: -4%; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .labels p { font-size: 1.1rem; }
+    .sticker { padding: 1.2rem 1.2rem 1.3rem; }
+  }
 </style>
 </head>
 <body>
 
-<main class="sheet">
-  <div class="stage">
-    <div class="head">
-      <img class="paper" src="img/torn-black-paper.webp" alt="" width="1190" height="1060">
+<header class="sky">
+  <div class="wrap hero">
+    <div class="hero-text">
       <h1 class="sr-only">Trick or Treat with Robots! For kids.</h1>
-      <img class="trick" src="img/trick.webp" alt="" width="355" height="216">
-      <img class="or" src="img/or.webp" alt="" width="118" height="132">
-      <img class="treat" src="img/treat.webp" alt="" width="404" height="216">
-      <img class="ghost" src="img/ghost.webp" alt="" width="139" height="159">
-      <img class="title" src="img/robots-title-complete.webp" alt="" width="1149" height="411">
-      <p class="kids" aria-hidden="true">for kids!</p>
+      <div class="lettering" aria-hidden="true">
+        <img class="trick" src="img/trick.webp" alt="" width="355" height="216">
+        <img class="or" src="img/or.webp" alt="" width="118" height="132">
+        <img class="treat" src="img/treat.webp" alt="" width="404" height="216">
+      </div>
+      <div class="banner" aria-hidden="true">
+        <img src="img/robots-title-complete.webp" alt="" width="1149" height="411">
+        <p class="kids">for kids!</p>
+      </div>
 
-      <p class="label when">When:</p>
-      <p class="label where">Where:</p>
-      <div class="date">
-        <svg viewBox="0 0 234 55" role="img" aria-label="October 31, 5 to 8 PM">
-          <image href="img/date-paper-texture.webp" width="234" height="55"/>
-          <text x="19.6" y="25.2" font-size="24.8" dominant-baseline="central">Oct. 31 @ 5–8 PM</text>
-        </svg>
+      <div class="labels">
+        <div>
+          <p>When:</p>
+          <svg viewBox="0 0 234 55" role="img" aria-label="October 31, 5 to 8 PM">
+            <image href="img/date-paper-texture.webp" width="234" height="55"/>
+            <text x="19.6" y="25.2" font-size="24.8" dominant-baseline="central">Oct. 31 @ 5–8 PM</text>
+          </svg>
+        </div>
+        <div>
+          <p>Where:</p>
+          <svg viewBox="0 0 262 59" role="img" aria-label="374 Connecticut Street, San Francisco. Open in Google Maps.">
+            <path d="M0 22.3793L14.5287 0L61.5 4.5L95.8891 0L130.758 13.2241L225.5 8.5L262 22.3793L229.068 59L152.067 48.8276L113.323 59L63.5 51L0 48.8276V22.3793Z" fill="#F4E66B"/>
+            <image href="img/address-paper-texture.webp" width="260" height="59" opacity=".35"/>
+            <a href="https://maps.google.com/?q=374+Connecticut+St,+San+Francisco,+CA">
+              <text x="10.8" y="27.9" font-size="24.2" dominant-baseline="central">374 Connecticut St.</text>
+            </a>
+          </svg>
+        </div>
       </div>
-      <div class="address">
-        <svg viewBox="0 0 262 59" role="img" aria-label="374 Connecticut Street, San Francisco. Open in Google Maps.">
-          <path d="M0 22.3793L14.5287 0L61.5 4.5L95.8891 0L130.758 13.2241L225.5 8.5L262 22.3793L229.068 59L152.067 48.8276L113.323 59L63.5 51L0 48.8276V22.3793Z" fill="#F4E66B"/>
-          <image href="img/address-paper-texture.webp" width="260" height="59" opacity=".35"/>
-          <a href="https://maps.google.com/?q=374+Connecticut+St,+San+Francisco,+CA">
-            <text x="10.8" y="27.9" font-size="24.2" dominant-baseline="central">374 Connecticut St.</text>
-          </a>
-        </svg>
-      </div>
-      <img class="corn-upper" src="img/candy-corn-upper.webp" alt="" width="80" height="87">
-      <img class="bat-upper" src="img/bat-upper.webp" alt="" width="200" height="103">
     </div>
 
-    <div class="lower">
-      <img class="glow glow-middle" src="img/orange-glow-middle.svg" alt="" width="519" height="372">
-      <img class="glow glow-right" src="img/orange-glow-lower-right.svg" alt="" width="397" height="336">
-      <img class="glow glow-footer" src="img/orange-glow-footer.svg" alt="" width="380" height="157">
-
-      <div class="piece bubble bubble-candy">
+    <div class="hero-art">
+      <img class="ghost" src="img/ghost.webp" alt="" width="139" height="159">
+      <img class="bat-upper" src="img/bat-upper.webp" alt="" width="200" height="103">
+      <img class="corn-upper" src="img/candy-corn-upper.webp" alt="" width="80" height="87">
+      <div class="bubble">
         <svg viewBox="0 0 190 51" role="img" aria-label="We (robots) are handing out candy!">
           <path d="M23.5 20V0H105L170 5V15L189.5 29L170 50.5L105 45L42.5 50.5L6 43L0 24L23.5 20Z" fill="#fff"/>
           <text font-size="18" x="95.5"><tspan y="13" dominant-baseline="central">We (robots) are</tspan><tspan x="95.5" y="31" dominant-baseline="central">handing out candy!</tspan></text>
         </svg>
       </div>
-      <div class="piece vampire"><img src="img/vampire-robot-sticker-full.webp" alt="A tall robot in a green vampire cape holding a tray of candy" width="523" height="767"></div>
-      <img class="piece bat-lower" src="img/bat-lower.webp" alt="" width="180" height="101">
-      <img class="piece lolly" src="img/lollipop.webp" alt="" width="211" height="206">
-      <img class="piece candy-purple" src="img/wrapped-candy-purple.webp" alt="" width="101" height="81">
-      <div class="piece bubble bubble-meet">
-        <svg viewBox="0 0 140 31" role="img" aria-label="Come meet us!">
-          <path d="M0 25V3.5L15 0L94.5 3.5L137.5 0V12.5L139.5 28L113 31H58L32 28H8L0 25Z" fill="#fff"/>
-          <text font-size="18" x="68" y="15.5" dominant-baseline="central">Come meet us!</text>
-        </svg>
-      </div>
-      <div class="piece fairy"><img src="img/fairy-robot-sticker-full.webp" alt="A tracked robot with butterfly wings and two arms" width="747" height="580"></div>
-      <img class="piece corn-lower" src="img/candy-corn-lower.webp" alt="" width="65" height="69">
-      <img class="piece candy-striped" src="img/wrapped-candy-striped.webp" alt="" width="132" height="119">
-      <p class="piece grown">Grown ups welcome!</p>
+      <img class="vampire" src="img/vampire-robot-sticker-full.webp" alt="A tall robot in a green vampire cape holding a tray of candy" width="523" height="767">
     </div>
   </div>
+</header>
 
-  <section class="notes">
-    <div class="info">
-      <div class="sticker">
-        <h2>How it works</h2>
-        <ol class="steps">
-          <li><div><strong>Walk up to a robot</strong>They're hard to miss. Costumes encouraged.</div></li>
-          <li><div><strong>Say "trick or treat"</strong>Loud and clear. The robots are friendly but a little hard of hearing.</div></li>
-          <li><div><strong>Hold out your bag</strong>The robot hands over the candy. Say thanks, it likes that.</div></li>
-        </ol>
+<section class="candy-land">
+  <div class="tear" aria-hidden="true"></div>
+  <img class="glow glow-middle" src="img/orange-glow-middle.svg" alt="" width="519" height="372">
+  <img class="glow glow-right" src="img/orange-glow-lower-right.svg" alt="" width="397" height="336">
+  <img class="glow glow-footer" src="img/orange-glow-footer.svg" alt="" width="380" height="157">
+
+  <div class="wrap">
+    <div class="stage">
+      <div class="notes">
+        <div class="sticker">
+          <h2>How it works</h2>
+          <ol class="steps">
+            <li><div><strong>Walk up to a robot</strong>They're hard to miss. Costumes encouraged.</div></li>
+            <li><div><strong>Say "trick or treat"</strong>Loud and clear. The robots are friendly but a little hard of hearing.</div></li>
+            <li><div><strong>Hold out your bag</strong>The robot hands over the candy. Say thanks, it likes that.</div></li>
+          </ol>
+        </div>
+        <div class="sticker">
+          <h2>Good to know</h2>
+          <ul class="tips">
+            <li>Free, no sign-up. Just show up any time between 5 and 8 pm.</li>
+            <li>Bring a bag or bucket for your candy.</li>
+            <li>Kids should come with a grown-up. Grown-ups get candy too.</li>
+          </ul>
+        </div>
       </div>
-      <div class="sticker">
-        <h2>Good to know</h2>
-        <ul class="tips">
-          <li>Free, no sign-up. Just show up any time between 5 and 8 pm.</li>
-          <li>Bring a bag or bucket for your candy.</li>
-          <li>Kids should come with a grown-up. Grown-ups get candy too.</li>
-        </ul>
+
+      <div class="fairy-col">
+        <div class="bubble">
+          <svg viewBox="0 0 140 31" role="img" aria-label="Come meet us!">
+            <path d="M0 25V3.5L15 0L94.5 3.5L137.5 0V12.5L139.5 28L113 31H58L32 28H8L0 25Z" fill="#fff"/>
+            <text font-size="18" x="68" y="15.5" dominant-baseline="central">Come meet us!</text>
+          </svg>
+        </div>
+        <img class="fairy" src="img/fairy-robot-sticker-full.webp" alt="A tracked robot with butterfly wings and two arms" width="747" height="580">
+        <img class="deco lolly" src="img/lollipop.webp" alt="" width="211" height="206">
+        <img class="deco candy-purple" src="img/wrapped-candy-purple.webp" alt="" width="101" height="81">
+        <img class="deco bat-lower" src="img/bat-lower.webp" alt="" width="180" height="101">
+        <img class="deco candy-striped" src="img/wrapped-candy-striped.webp" alt="" width="132" height="119">
+        <img class="deco corn-lower" src="img/candy-corn-lower.webp" alt="" width="65" height="69">
       </div>
     </div>
-  </section>
+
+    <p class="grown">Grown ups welcome!</p>
+  </div>
 
   <footer>
     See you on Connecticut St. <a href="poster.png">Grab the poster</a> to share or print.
   </footer>
-</main>
+</section>
 
 </body>
 </html>
