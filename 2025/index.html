@@ -31,20 +31,20 @@
   .sky {
     position: relative; z-index: 2; color: var(--white);
     background: url("../img/paper-tile.webp") center bottom / 100% auto repeat-y, var(--black-paper);
-    padding: 2rem 0 1.5rem;
+    padding: 1.25rem 0 .75rem;
   }
   .sky .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem; align-items: center; }
-  .lettering { display: flex; align-items: flex-start; gap: 3%; max-width: 520px; }
+  .lettering { display: flex; align-items: flex-start; gap: 3%; max-width: 340px; }
   .lettering .trick { width: 36%; }
   .lettering .or    { width: 12%; margin-top: 11.8%; }
   .lettering .treat { width: 44%; margin-top: 8.6%; }
   .year {
     margin: 0; font-family: "Gochi Hand", cursive; font-weight: 400; color: var(--label-yellow);
-    font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: 1; transform: rotate(-3deg);
+    font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; transform: rotate(-3deg);
   }
-  .sky p { margin: .75rem 0 0; color: var(--label-yellow); }
+  .sky p { margin: .4rem 0 0; color: var(--label-yellow); }
   .ghost { position: absolute; right: 4%; top: 1rem; width: clamp(50px, 6vw, 80px); }
-  .tear { position: relative; z-index: 1; height: clamp(60px, 8vw, 120px); background: url("../img/tear-edge.webp") center top / 100% 100% no-repeat; }
+  .tear { position: relative; z-index: 1; height: clamp(40px, 5vw, 70px); background: url("../img/tear-edge.webp") center top / 100% 100% no-repeat; }
 
   .candy-land {
     position: relative; z-index: 1; overflow: hidden; padding-bottom: 3rem;
@@ -58,7 +58,7 @@
 
   .gallery {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2rem 1.75rem;
-    padding-top: clamp(1.5rem, 4vw, 3rem); list-style: none; margin: 0;
+    padding-top: 1rem; list-style: none; margin: 0;
   }
   .gallery li {
     background: var(--white); padding: .75rem .75rem 1rem;
@@ -74,7 +74,7 @@
   .back { text-align: center; margin: 3rem 0 0; font-weight: 600; }
   @media (max-width: 700px) {
     .sky .wrap { grid-template-columns: 1fr; }
-    .lettering { max-width: 360px; }
+    .lettering { max-width: 260px; }
   }
 </style>
 </head>
@@ -89,7 +89,7 @@
         <img class="or" src="../img/or.webp" alt="" width="118" height="132">
         <img class="treat" src="../img/treat.webp" alt="" width="404" height="216">
       </h1>
-      <p>Photos from last year's robot candy giveaway. Kids' faces are hidden on purpose.</p>
+      <p>Photos from last year's robot candy giveaway.</p>
     </div>
     <p class="year">Halloween 2025</p>
   </div>
