@@ -57,7 +57,7 @@
   .candy-land .wrap { position: relative; z-index: 1; }
 
   .gallery {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2rem 1.75rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem 1.25rem;
     padding-top: 1rem; list-style: none; margin: 0;
   }
   .gallery li {
@@ -67,11 +67,11 @@
   }
   .gallery li:nth-child(odd) { transform: rotate(-1.2deg); }
   .gallery li:nth-child(even) { transform: rotate(1deg); }
-  .gallery li.wide { grid-column: 1 / -1; max-width: 640px; justify-self: center; width: 100%; }
   .gallery img { width: 100%; aspect-ratio: 1200 / 1603; object-fit: cover; }
   .gallery figure { margin: 0; }
   .gallery figcaption { font-weight: 600; padding: .6rem .25rem 0; }
   .back { text-align: center; margin: 3rem 0 0; font-weight: 600; }
+  @media (max-width: 900px) { .gallery { grid-template-columns: repeat(2, 1fr); gap: 1rem .75rem; } }
   @media (max-width: 700px) {
     .sky .wrap { grid-template-columns: 1fr; }
     .lettering { max-width: 260px; }
@@ -101,12 +101,12 @@
   <img class="glow glow-footer" src="../img/orange-glow-footer.svg" alt="" width="380" height="157">
   <div class="wrap">
     <ol class="gallery">
-      <li class="wide"><figure><img src="photos/01-robot.jpg" alt="The CandyBot robot on its own, ready for the night" width="1200" height="1603" loading="eager"><figcaption>The robot, ready for duty.</figcaption></figure></li>
+      <li><figure><img src="photos/01-robot.jpg" alt="The CandyBot robot on its own, ready for the night" width="1200" height="1603" loading="eager"><figcaption>The robot, ready for duty.</figcaption></figure></li>
       <li><figure><img src="photos/02-kids.jpg" alt="A crowd of kids in costumes lined up for the robot, faces covered with pumpkin and ghost emojis" width="1200" height="1603" loading="lazy"><figcaption>The line forms.</figcaption></figure></li>
       <li><figure><img src="photos/03-kids.jpg" alt="Kids in costumes gathered around the robot, faces covered with emojis" width="1200" height="1603" loading="lazy"><figcaption>Trick or treat, robot!</figcaption></figure></li>
       <li><figure><img src="photos/04-kids.jpg" alt="Kids getting candy from the robot, faces covered with emojis" width="1200" height="1603" loading="lazy"><figcaption>Candy delivered.</figcaption></figure></li>
       <li><figure><img src="photos/05-kids.jpg" alt="More kids meeting the robot, faces covered with emojis" width="1200" height="1603" loading="lazy"><figcaption>Come meet us!</figcaption></figure></li>
-      <li class="wide"><figure><img src="photos/06-house.jpg" alt="The people from the house who ran the event, posing together" width="1200" height="1603" loading="lazy"><figcaption>The house crew. See you this year!</figcaption></figure></li>
+      <li><figure><img src="photos/06-house.jpg" alt="The people from the house who ran the event, posing together" width="1200" height="1603" loading="lazy"><figcaption>The house crew. See you this year!</figcaption></figure></li>
     </ol>
     <p class="back"><a href="/">Back to this year's event</a></p>
   </div>
