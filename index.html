@@ -48,8 +48,9 @@
   }
   .hero {
     display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-    gap: 2rem 3rem; align-items: start; padding-top: 2.5rem;
+    gap: 1.5rem 3rem; align-items: start; padding-top: 1.25rem;
   }
+  .hero-text { max-width: 540px; }
   .lettering { display: flex; align-items: flex-start; gap: 3%; width: 100%; margin-left: 2%; }
   .lettering .trick { width: 36%; }
   .lettering .or    { width: 12%; margin-top: 11.8%; }
@@ -63,28 +64,28 @@
     transform: rotate(-3deg); transform-origin: left top;
   }
   .labels {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1rem 2rem; margin-top: 1.5rem; padding-left: 2%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: .75rem 1.5rem; margin-top: 1rem; padding-left: 2%;
   }
-  .labels p { margin: 0 0 .25rem; font-weight: 500; font-size: 1.3rem; color: var(--label-yellow); }
-  .labels svg { display: block; width: 100%; max-width: 400px; height: auto; overflow: visible; }
+  .labels p { margin: 0 0 .15rem; font-weight: 500; font-size: 1.15rem; color: var(--label-yellow); }
+  .labels svg { display: block; width: 100%; max-width: 300px; height: auto; overflow: visible; }
   .labels text, .bubble text { font-family: "Kanit", sans-serif; font-weight: 600; letter-spacing: .02em; fill: var(--ink); }
   .labels a { text-decoration: none; }
   .labels a:hover text, .labels a:focus-visible text { text-decoration: underline; }
 
   .hero-art { position: relative; }
   .hero-art .ghost, .hero-art .bat-upper, .hero-art .corn-upper { position: absolute; }
-  .hero-art .ghost { top: 0; right: 4%; width: 17%; }
+  .hero-art .ghost { top: 10%; right: 2%; width: 15%; }
   .hero-art .bat-upper { top: 36%; left: 0; width: 24%; }
   .hero-art .corn-upper { top: 52%; right: 2%; width: 10%; }
   .bubble { width: 100%; }
   .bubble svg { display: block; width: 100%; height: auto; overflow: visible; }
   .bubble text { text-anchor: middle; }
-  .hero-art .bubble { position: absolute; top: 9%; left: 8%; width: 58%; z-index: 1; }
-  .vampire { width: 60%; margin: 26% 0 -16% 24%; position: relative; }
+  .hero-art .bubble { position: absolute; top: 4%; left: 10%; width: 54%; z-index: 1; }
+  .vampire { width: 50%; margin: 20% 0 -18% 30%; position: relative; }
 
   /* Torn edge into the orange */
-  .tear { position: relative; z-index: 1; height: clamp(70px, 10vw, 150px); background: url("img/tear-edge.webp") center top / 100% 100% no-repeat; }
+  .tear { position: relative; z-index: 1; height: clamp(50px, 7vw, 110px); background: url("img/tear-edge.webp") center top / 100% 100% no-repeat; }
 
   /* Orange section */
   .candy-land {
@@ -99,7 +100,7 @@
   .candy-land .wrap { position: relative; z-index: 1; }
   .stage {
     display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-    gap: 2rem 3rem; align-items: start; padding-top: clamp(2.5rem, 6vw, 5rem);
+    gap: 2rem 3rem; align-items: start; padding-top: clamp(2rem, 5vw, 4rem);
   }
 
   .fairy-col { position: relative; padding-top: 1rem; }
@@ -129,21 +130,22 @@
   .steps strong { display: block; font-weight: 600; font-size: 1.15rem; line-height: 1.2; }
   .tips { padding-left: 1.2rem; margin: 0; }
   .tips li { margin-bottom: .45rem; }
-  .photos-link {
-    justify-self: start; display: inline-block; text-decoration: none;
-    background: var(--paper-label); color: var(--ink); font-weight: 600; font-size: 1.25rem;
-    padding: .7rem 1.4rem; transform: rotate(-1.5deg);
-    clip-path: polygon(0 40%, 5% 0, 45% 8%, 98% 0, 100% 45%, 96% 100%, 50% 92%, 3% 100%);
+  .ribbon {
+    position: absolute; top: 1.1rem; right: 0; z-index: 3; text-decoration: none;
+    background: var(--paper-label); color: var(--ink); font-weight: 600; font-size: 1.05rem;
+    padding: .5rem 1.4rem .5rem 1.2rem; transform: rotate(-2deg); transform-origin: right center;
+    clip-path: polygon(0 45%, 4% 0, 40% 10%, 100% 0, 100% 100%, 45% 92%, 3% 100%);
   }
-  .photos-link:hover, .photos-link:focus-visible { background: var(--label-yellow); }
+  .ribbon:hover, .ribbon:focus-visible { background: var(--label-yellow); }
 
   .grown { margin: clamp(2rem, 5vw, 4rem) 0 0; text-align: center; font-weight: 600; font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.1; }
   footer { text-align: center; padding: 1rem 24px 3.5rem; font-weight: 600; }
 
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; gap: 0; padding-top: 2rem; }
+    .hero { grid-template-columns: 1fr; gap: 0; padding-top: 3.25rem; }
+    .hero-text { max-width: none; }
     .hero-art { display: grid; margin-top: 1.5rem; }
-    .hero-art .ghost { top: auto; bottom: 20%; right: 0; width: 20%; }
+    .hero-art .ghost { top: auto; bottom: 20%; right: 0; width: 18%; }
     .hero-art .bat-upper, .hero-art .corn-upper { display: none; }
     .hero-art .bubble { position: static; width: 70%; margin-left: 8%; }
     .vampire { width: 58%; margin: 2% 0 -14% -6%; }
@@ -162,6 +164,7 @@
 <body>
 
 <header class="sky">
+  <a class="ribbon" href="/2025/">Photos from last year</a>
   <div class="wrap hero">
     <div class="hero-text">
       <h1 class="sr-only">Trick or Treat with Robots! For kids.</h1>
@@ -236,7 +239,6 @@
             <li>Kids should come with a grown-up. Grown-ups get candy too.</li>
           </ul>
         </div>
-        <a class="photos-link" href="/2025/">See photos from last year</a>
       </div>
 
       <div class="fairy-col">
