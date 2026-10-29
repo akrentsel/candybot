@@ -1,7 +1,7 @@
 # CandyBot
 
 Event page for CandyBot: robots handing out candy to kids at
-374 Connecticut Ave, San Francisco, 6 to 8 pm.
+374 Connecticut St, San Francisco, 5 to 8 pm.
 
 Live at https://candybot.exe.xyz/
 
