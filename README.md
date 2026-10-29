@@ -10,9 +10,13 @@ Live at https://candybot.exe.xyz/
 Everything is in `index.html`. There is no build step. Edit, commit,
 push to `main`, and the live site updates within a minute.
 
-The two robot illustrations in `img/` are cut out of `poster.jpg` by
-`scripts/make-images.sh` (needs ImageMagick). Re-run it if the poster
-changes.
+The artwork in `img/` comes from the Figma developer handoff
+(https://www.figma.com/design/AWKpUqx8NIJqSOLR92iqcd/CandyBot). The page
+composes the handoff's transparent pieces in the poster's own
+coordinates, so the hero scales with the page width; labels and speech
+bubbles are live text in Kanit and Gochi Hand. When a new handoff folder
+arrives, run `scripts/import-assets.sh <folder>` to refresh `img/` and
+`poster.png`.
 
 ## How deploys work
 
