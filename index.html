@@ -70,8 +70,8 @@
   .labels p { margin: 0 0 .15rem; font-weight: 500; font-size: 1.15rem; color: var(--label-yellow); }
   .labels svg { display: block; width: 100%; max-width: 300px; height: auto; overflow: visible; }
   .labels text, .bubble text { font-family: "Kanit", sans-serif; font-weight: 600; letter-spacing: .02em; fill: var(--ink); }
-  .labels a { text-decoration: none; }
-  .labels a:hover text, .labels a:focus-visible text { text-decoration: underline; }
+  .labels .map { display: block; max-width: 300px; text-decoration: none; }
+  .labels .map:hover text, .labels .map:focus-visible text { text-decoration: underline; }
 
   .hero-art { position: relative; }
   .hero-art .ghost, .hero-art .bat-upper, .hero-art .corn-upper { position: absolute; }
@@ -189,13 +189,13 @@
         </div>
         <div>
           <p>Where:</p>
-          <svg viewBox="0 0 262 59" role="img" aria-label="374 Connecticut Street, San Francisco. Open in Google Maps.">
-            <path d="M0 22.3793L14.5287 0L61.5 4.5L95.8891 0L130.758 13.2241L225.5 8.5L262 22.3793L229.068 59L152.067 48.8276L113.323 59L63.5 51L0 48.8276V22.3793Z" fill="#F4E66B"/>
-            <image href="img/address-paper-texture.webp" width="260" height="59" opacity=".35"/>
-            <a href="https://maps.google.com/?q=374+Connecticut+St,+San+Francisco,+CA">
+          <a class="map" href="https://maps.google.com/?q=374+Connecticut+St,+San+Francisco,+CA" aria-label="374 Connecticut Street, San Francisco. Open in Google Maps.">
+            <svg viewBox="0 0 262 59" aria-hidden="true">
+              <path d="M0 22.3793L14.5287 0L61.5 4.5L95.8891 0L130.758 13.2241L225.5 8.5L262 22.3793L229.068 59L152.067 48.8276L113.323 59L63.5 51L0 48.8276V22.3793Z" fill="#F4E66B"/>
+              <image href="img/address-paper-texture.webp" width="260" height="59" opacity=".12"/>
               <text x="10.8" y="27.9" font-size="24.2" dominant-baseline="central">374 Connecticut St.</text>
-            </a>
-          </svg>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
