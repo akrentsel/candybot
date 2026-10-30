@@ -99,7 +99,7 @@
   .glow-footer { left: -6%; bottom: 0; width: min(55vw, 640px); }
   .candy-land .wrap { position: relative; z-index: 1; }
   .stage {
-    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    display: grid; grid-template-columns: minmax(0, 600px); justify-content: center;
     gap: 2rem 3rem; align-items: start; padding-top: clamp(2rem, 5vw, 4rem);
   }
 
@@ -113,23 +113,6 @@
   .fairy-col .candy-striped { left: 12%; bottom: -3%; width: 17%; }
   .fairy-col .corn-lower { right: 8%; bottom: 4%; width: 9%; }
 
-  .notes { display: grid; gap: 1.5rem; }
-  .sticker {
-    background: var(--white); padding: 1.4rem 1.6rem 1.6rem;
-    clip-path: polygon(1% 3%, 99% 0, 100% 97%, 0 100%);
-  }
-  .sticker h2 { font-weight: 600; font-size: 1.6rem; line-height: 1.1; margin: 0 0 .9rem; }
-  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; }
-  .steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: .8rem; align-items: start; }
-  .steps li::before {
-    content: counter(step); counter-increment: step; font-weight: 600; font-size: 1.2rem;
-    color: var(--white); background: var(--ink); width: 2.4rem; height: 2.4rem; border-radius: 50%;
-    display: grid; place-items: center; margin-top: .1rem;
-  }
-  .steps { counter-reset: step; }
-  .steps strong { display: block; font-weight: 600; font-size: 1.15rem; line-height: 1.2; }
-  .tips { padding-left: 1.2rem; margin: 0; }
-  .tips li { margin-bottom: .45rem; }
   /* Corner ribbon: a diagonal yellow strip across the top right corner */
   .corner { position: absolute; top: 0; right: 0; width: 230px; height: 230px; overflow: hidden; z-index: 3; pointer-events: none; }
   .ribbon {
@@ -142,7 +125,6 @@
   .ribbon:hover, .ribbon:focus-visible { background: var(--label-yellow); text-decoration-thickness: 3px; }
   @media (max-width: 600px) { .corner { width: 170px; height: 170px; } .ribbon { top: 36px; right: -84px; width: 300px; font-size: .9rem; padding: .4rem 2rem; } }
 
-  .grown { margin: clamp(2rem, 5vw, 4rem) 0 0; text-align: center; font-weight: 600; font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.1; }
   footer { text-align: center; padding: 1rem 24px 3.5rem; font-weight: 600; }
 
   /* A couple of prints from last year */
@@ -177,7 +159,6 @@
   @media (max-width: 480px) {
     .wrap { padding: 0 16px; }
     .labels p { font-size: 1.1rem; }
-    .sticker { padding: 1.2rem 1.2rem 1.3rem; }
   }
 </style>
 </head>
@@ -242,25 +223,6 @@
 
   <div class="wrap">
     <div class="stage">
-      <div class="notes">
-        <div class="sticker">
-          <h2>How it works</h2>
-          <ol class="steps">
-            <li><div><strong>Walk up to a robot</strong>They're hard to miss. Costumes encouraged.</div></li>
-            <li><div><strong>Say "trick or treat"</strong>Loud and clear. The robots are friendly but a little hard of hearing.</div></li>
-            <li><div><strong>Hold out your bag</strong>The robot hands over the candy. Say thanks, it likes that.</div></li>
-          </ol>
-        </div>
-        <div class="sticker">
-          <h2>Good to know</h2>
-          <ul class="tips">
-            <li>Free, no sign-up. Just show up any time between 5 and 8 pm.</li>
-            <li>Bring a bag or bucket for your candy.</li>
-            <li>Kids should come with a grown-up. Grown-ups get candy too.</li>
-          </ul>
-        </div>
-      </div>
-
       <div class="fairy-col">
         <div class="bubble">
           <svg viewBox="0 0 140 31" role="img" aria-label="Come meet us!">
@@ -276,8 +238,6 @@
         <img class="deco corn-lower" src="img/candy-corn-lower.webp" alt="" width="65" height="69">
       </div>
     </div>
-
-    <p class="grown">Grown ups welcome!</p>
 
     <section class="last-year">
       <h2>Last year</h2>
