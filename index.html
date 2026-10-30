@@ -145,6 +145,22 @@
   .grown { margin: clamp(2rem, 5vw, 4rem) 0 0; text-align: center; font-weight: 600; font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.1; }
   footer { text-align: center; padding: 1rem 24px 3.5rem; font-weight: 600; }
 
+  /* A couple of prints from last year */
+  .last-year { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+  .last-year h2 {
+    font-family: "Gochi Hand", cursive; font-weight: 400; text-align: center;
+    font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1; margin: 0 0 1.25rem; transform: rotate(-2deg);
+  }
+  .prints { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .prints a {
+    display: block; width: min(100%, 340px); background: var(--white); padding: .6rem .6rem .8rem;
+    clip-path: polygon(0.5% 1%, 99.5% 0, 100% 99%, 0 100%); box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  }
+  .prints a:first-child { transform: rotate(-2deg); }
+  .prints a:last-child { transform: rotate(1.5deg); }
+  .prints img { width: 100%; aspect-ratio: 1200 / 1603; object-fit: cover; }
+  .prints .more { display: block; width: auto; background: none; box-shadow: none; clip-path: none; padding: 0; align-self: center; font-weight: 600; transform: none; }
+
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; gap: 0; padding-top: 3.25rem; }
     .hero-text { max-width: none; }
@@ -262,6 +278,15 @@
     </div>
 
     <p class="grown">Grown ups welcome!</p>
+
+    <section class="last-year">
+      <h2>Last year</h2>
+      <div class="prints">
+        <a href="/2025/"><img src="/2025/photos/01-robot.jpg" alt="The CandyBot robot at last year's event" width="1200" height="1603" loading="lazy"></a>
+        <a href="/2025/"><img src="/2025/photos/02-kids.jpg" alt="Kids lined up for the robot last year, faces covered with emojis" width="1200" height="1603" loading="lazy"></a>
+        <a class="more" href="/2025/">See all the photos</a>
+      </div>
+    </section>
   </div>
 
   <footer>
